@@ -1,4 +1,5 @@
 .hello {
     color: red;
+    background: red;
     /* background: url('./tips.svg') no-repeat; */
 }
