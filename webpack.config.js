@@ -13,8 +13,13 @@ module.exports = {
     output: {
         // filename: 'bundle.js',
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
+    devServer: {
+        contentBase: './dist'
+    },
+    // devtool: 'inline-source-map',
     plugins: [
         // new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
