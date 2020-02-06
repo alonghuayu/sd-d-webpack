@@ -1,25 +1,33 @@
 
-import _ from 'lodash';
+// import _ from 'lodash';
+import { cube } from './math.js';
 import './style.css';
 import Icon from './tips.svg';
 import printMe from './print.js';
 
 function component() {
-    var element = document.createElement('div');
-    var btn = document.createElement('button');
+    // var element = document.createElement('div');
+    var element = document.createElement('pre');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello');
+    element.innerHTML = [
+        'Hello webpack!',
+        '5 cubed is equal to ' + cube(5)
+    ].join('\n\n');
 
-    // 将图像添加到我们现有的 div。
-    var myIcon = new Image();
-    myIcon.src = Icon;
-    element.appendChild(myIcon);
+    // var btn = document.createElement('button');
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+    // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    // element.classList.add('hello');
 
-    element.appendChild(btn);
+    // // 将图像添加到我们现有的 div。
+    // var myIcon = new Image();
+    // myIcon.src = Icon;
+    // element.appendChild(myIcon);
+
+    // btn.innerHTML = 'Click me and check the console!';
+    // btn.onclick = printMe;
+
+    // element.appendChild(btn);
 
     return element;
 }
