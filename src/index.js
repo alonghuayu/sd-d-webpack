@@ -1,6 +1,6 @@
 
 // import _ from 'lodash';
-import { cube } from './math.js';
+import { cube, square } from './math.js';
 import './style.css';
 import Icon from './tips.svg';
 import printMe from './print.js';
@@ -9,9 +9,12 @@ function component() {
     // var element = document.createElement('div');
     var element = document.createElement('pre');
 
+    var num = 11;
+
     element.innerHTML = [
         'Hello webpack!',
-        '5 cubed is equal to ' + cube(5)
+        num + ' cubed is equal to ' + cube(num),
+        num + ' square is equal to ' + square(num)
     ].join('\n\n');
 
     // var btn = document.createElement('button');
