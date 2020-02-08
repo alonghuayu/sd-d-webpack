@@ -5,41 +5,61 @@ import './style.css';
 import Icon from './tips.svg';
 import printMe from './print.js';
 
-function component() {
-    // var element = document.createElement('div');
-    var element = document.createElement('pre');
+async function getComponent() {
+    // function getComponent() {
+    // return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+    //     var element = document.createElement('div');
 
-    var num = 11;
+    //     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-    element.innerHTML = [
-        'Hello webpack!',
-        num + ' cubed is equal to ' + cube(num),
-        num + ' square is equal to ' + square(num)
-    ].join('\n\n');
+    //     return element;
 
-    // var btn = document.createElement('button');
+    // }).catch(error => 'An error occurred while loading the component');
 
-    // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    // element.classList.add('hello');
+    var element = document.createElement('div');
+    const _ = await import(/* webpackChunkName: "lodash" */ 'lodash');
 
-    // // 将图像添加到我们现有的 div。
-    // var myIcon = new Image();
-    // myIcon.src = Icon;
-    // element.appendChild(myIcon);
-
-    // btn.innerHTML = 'Click me and check the console!';
-    // btn.onclick = printMe;
-
-    // element.appendChild(btn);
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
     return element;
 }
 
+getComponent().then(component => {
+    document.body.appendChild(component);
+})
+// function component() {
+//     // var element = document.createElement('div');
+//     var element = document.createElement('pre');
+
+//     var num = 11;
+
+//     element.innerHTML = [
+//         'Hello webpack!',
+//         num + ' cubed is equal to ' + cube(num),
+//         num + ' square is equal to ' + square(num)
+//     ].join('\n\n');
+
+//     // var btn = document.createElement('button');
+
+//     // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+//     // element.classList.add('hello');
+
+//     // // 将图像添加到我们现有的 div。
+//     // var myIcon = new Image();
+//     // myIcon.src = Icon;
+//     // element.appendChild(myIcon);
+
+//     // btn.innerHTML = 'Click me and check the console!';
+//     // btn.onclick = printMe;
+
+//     // element.appendChild(btn);
+
+//     return element;
+// }
+
 // document.body.appendChild(component());
-let element = component(); // 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
-document.body.appendChild(element);
-
-
+// let element = component(); // 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
+// document.body.appendChild(element);
 
 if (module.hot) {
     module.hot.accept('./print.js', function () {

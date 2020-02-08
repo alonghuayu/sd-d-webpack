@@ -3,16 +3,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
-    // entry: {
-    //     app: './src/index.js'
-    // },
+    // entry: './src/index.js',
+    entry: {
+        index: './src/index.js'
+        // index: './src/index.js',
+        // another: './src/another-module.js'
+    },
     output: {
-        filename: 'bundle.js',
-        // filename: '[name].bundle.js',
+        // filename: 'bundle.js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
@@ -26,8 +29,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Output Management'
         }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'common' // 指定公共 bundle 的名称。
+        // }),
+        // new webpack.NamedModulesPlugin(),
+        // new webpack.HotModuleReplacementPlugin()
     ],
     module: {
         rules: [
